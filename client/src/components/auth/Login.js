@@ -28,7 +28,7 @@ class Login extends Component {
 			googleUserId: '',
 			readOnly: true,
 			picture: '',
-			isCaptchaVerified: '',
+			isCaptchaVerified: true,
 			emailVerified: false,
 			userNameOrEmail: '',
 			password: '',

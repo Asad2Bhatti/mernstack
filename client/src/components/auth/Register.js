@@ -25,7 +25,7 @@ class Register extends Component {
 			registrationType: 'standard',
 			readOnly: true,
 			picture: '',
-			isCaptchaVerified: '',
+			isCaptchaVerified: 'true',
 			userName: '',
 			firstName: '',
 			lastName: '',
@@ -356,19 +356,19 @@ class Register extends Component {
 								</div>
 
 								{/*Captcha*/}
-								<div style={{ margin: '0 auto' }} className="imr-capt">
+								{/* <div style={{ margin: '0 auto' }} className="imr-capt">
 									<Recaptcha
 										sitekey={ recaptchaSiteKey }
 										render="explicit"
 										onloadCallback={ this.reCaptchaLoaded }
 										verifyCallback={ this.verifyCaptchaClicked }
 									/>
-								</div>
+								</div> */}
+								{/* "6LcVPm4UAAAAABiWg8tWCdqtLnqtSbnCeSBGUoE9" */}
 
-
-								<div className="form-group col-12 text-left">
+								{/* <div className="form-group col-12 text-left">
 									<div className="g-recaptcha" data-sitekey="6LcVPm4UAAAAABiWg8tWCdqtLnqtSbnCeSBGUoE9"></div>
-								</div>
+								</div> */}
 								<div className="form-group col-12 mt-2">
 									<Link to="/resend-verification-email" style={{ fontSize: '12px' }}>Verify Email/ Activate Account</Link>
 								</div>

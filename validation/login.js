@@ -2,7 +2,7 @@ const Validator = require( 'validator' );
 const isEmpty = require( './is-empty' );
 
 // Set the validateRegisterInput() equal to module.exports so that it can be accessed in other files
-module.exports = function validateLoginInput( data ) {
+module.exports = function validateLoginInput( data = {}) {
 	let errors = {};
 
 	/**

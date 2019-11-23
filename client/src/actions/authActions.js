@@ -46,6 +46,7 @@ export const registerUser =  ( userData, history ) => dispatch => {
 	 * We set the state of the errors object to the new error object that we receive from err.response.data
 	 * If on successful registration, inside then(), history.push( '/login' ) will redirect the user to the login page.
 	 */
+	console.log("User Data========>",userData)
 	axios.post( '/api/users/register', userData, { withCredentials: true } )
 		.then( res => history.push( `/verifyEmail?email=${res.data.email}` ) )
 		.catch( ( err ) => dispatch( {
@@ -130,26 +131,26 @@ export const loginUser = ( userData, history ) => dispatch => {
 			 * We are using object destructuring here, below code is equivalent to const token = result.data.token
 			 */
 			const { token } = result.data;
-
+			
 			// Store token in localStorage
 			localStorage.setItem( 'jwtToken', token );
-
+			
 			// Set token to Auth Header using a custom function setAuthToken
 			setAuthToken( token );
-
+			
 			// Use jwt-decode to decode the auth token and get the user data from it( install jwt-decode in clients dir )
-			const decoded = jwt_decode( token );
-
+			const decoded = jwt_decode( token, { header: true } );
+			
 			// Set current user
 			dispatch( setCurrentUser( decoded ) );
-
 			// Once he is logged in send him to dashboard
 			history.push( '/dashboard' );
 		} )
-		.catch( ( err ) => dispatch( {
+		.catch( ( err ) => {
+			dispatch( {
 			type: GET_ERRORS,
-			payload: err.response.data
-		} ) );
+			payload: err
+		} )} );
 };
 
 // Login with Facebook- Get User Token.
